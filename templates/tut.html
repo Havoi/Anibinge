@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Title of your page here</title>
+</head>
+<body>
+<input type="text" id="name" name="name">
+<button id='clickMe'>Run Function</button>
+<script>
+
+var btn = document.getElementById('clickMe');
+
+
+btn.addEventListener("click", alertMe);
+
+function alertMe(){
+var x = document.getElementById("name").value;
+console.log(x);
+var google = '/';
+var location = google+x;
+console.log(location);
+window.location.href = location;
+
+};
+
+</script>
+</body>
+</html>
