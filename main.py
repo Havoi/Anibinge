@@ -66,16 +66,24 @@ def watch(anime_id1,epinum):
 		pass
 	episodeslist = []
 	x = 1
+	epinum = int(epinum)
 	try:
 		while True:
 			if (x<=total_episodes):
-				episodeslist.append(x)
 				
+				if (x==epinum):
+					episodeslist.append({x:"btn btn-info"})
+					
+					x = x+1
+					pass
+				episodeslist.append({x:"btn btn-outline-info"})
 				x = x+1
 			else:
 				break
 	except:
 		pass
+	
+
 	
 	try:
 		return render_template('watch.html', url = result[0] , episodes = episodeslist , anime_id = anime_id1)
@@ -105,4 +113,4 @@ def search(search_id):
 
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', debug = False)
+	app.run(host='localhost',port = '8000' , debug = True)
