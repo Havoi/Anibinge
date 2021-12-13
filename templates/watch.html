@@ -30,11 +30,11 @@
 <iframe width="560" height="315" src="{{ url }}" title="Anime Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <div class="buttowrapper">
-  
-  	{% for episode in episodes %}
-    <button  type="button" onclick="window.location.href='/{{ anime_id }}/episode/{{ episode }}';"  class="btn btn-outline-info">{{ episode }}</button>
+    {% for x in episodes %}
+  	{% for episode,class in x.items() %}
+    <button  type="button" onclick="window.location.href='/{{ anime_id }}/episode/{{ episode }}';"  class="{{ class }}">{{ episode }}</button>
   	{% endfor %}
-  
+    {% endfor %}
 </div>
 
 
