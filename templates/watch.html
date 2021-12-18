@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 <title>Anime</title>
@@ -7,27 +7,27 @@
 <body >
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Anibinge</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        </ul>
-          <form class="d-flex">
-            <input autocomplete="off" class="form-control me-2" type="search" id = "name" placeholder="Search" aria-label="Search">
-            
-          </form>
-        <button class="btn btn-outline-success" id="clickMe" type="submit">Search</button>
-        </div>
-      </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Anibinge</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    </ul>
+      <form class="d-flex">
+        <input autocomplete="off" class="form-control me-2" type="search" id = "name" placeholder="Search" aria-label="Search">
+        
+      </form>
+    <button class="btn btn-outline-success" id="clickMe" type="submit">Search</button>
+    </div>
+  </div>
+</nav>
 
 
 <div class = "iframewrapper">
-<iframe width="560" height="315" sandbox="allow-scripts allow-same-origin allow-forms allow-presentation allow-orientation-lock" src="{{ url }}" title="Anime Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<iframe width="560" height="315" src="{{ url }}" title="Anime Player"></iframe></div>
 
 <div class="buttowrapper">
     {% for x in episodes %}
@@ -63,13 +63,8 @@
 
 }</style>
    <script>
-      document.getElementById("name").addEventListener("keyup", function(event) {
-         event.preventDefault();
-         if (event.keyCode === 13) {
-         document.getElementById("clickMe").click();
-         }
-      });
       var a = document.getElementById('name');
+      a.addEventListener('keyup', alertMe);
       var btn = document.getElementById('clickMe');
 
 
