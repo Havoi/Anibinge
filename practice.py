@@ -21,7 +21,3 @@
 # print(latest)
 
 
-
-
-
-print(output3)
