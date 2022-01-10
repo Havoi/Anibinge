@@ -1,8 +1,10 @@
+from os import error
 import requests
 #()
 from flask import Flask,render_template
+from werkzeug.datastructures import ResponseCacheControl
 app = Flask(__name__)
-
+import Anim_links
 
 
 @app.route('/')
@@ -53,8 +55,13 @@ def info(anime_id):
 
 @app.route('/<anime_id1>/episode/<epinum>')
 def watch(anime_id1,epinum):
-	response = requests.get(f'https://gogoanime-api-flask.vercel.app/api/watch/{anime_id1}/{epinum}')
-	result = response.json()
+	# response = requests.get(f'https://gogoanime-api-flask.vercel.app/api/watch/{anime_id1}/{epinum}')
+	# result = response.json()
+	main_episode_and_animecode = f"{anime_id1}-episode-{epinum}"
+	response = Anim_links.main(main_episode_and_animecode)
+	print(response)
+	# result = response.json()
+	# print(result)
 	episodesreq = requests.get('https://gogoanime-api-flask.vercel.app/api/anime/'+ anime_id1)
 	episodejson = episodesreq.json()
 	try:
@@ -69,23 +76,25 @@ def watch(anime_id1,epinum):
 			if (x<=total_episodes):
 				
 				if (x==epinum):
-					episodeslist.append({x:"btn btn-info"})
+					episodeslist.append({x:"btnn btnn4"})
 					
 					x = x+1
 					pass
-				episodeslist.append({x:"btn btn-outline-info"})
-				x = x+1
+				elif (x!= epinum):
+					episodeslist.append({x:"btnn btnn1"})
+					x = x+1
 			else:
 				break
 	except:
 		pass
 	
-
+	print(episodeslist)
 	
+	print(response)
 	try:
-		return render_template('watch.html', url = result[0] , episodes = episodeslist , anime_id = anime_id1)
-	except:
-		return "NOT FOUND"
+		return render_template('watch.html', url = response , episodes = episodeslist , anime_id = anime_id1)
+	except error as e:
+		return e
 
 @app.route('/search/<search_id>')
 def search(search_id):
